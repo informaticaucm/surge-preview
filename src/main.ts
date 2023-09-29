@@ -109,7 +109,13 @@ ${getCommentFooter()}
     });
     data = result.data;
   } catch (err) {
-    fail(err);
+    let error : Error;
+    if (err instanceof Error) {
+      error = err;
+    } else {
+      error = new Error('Unexpected error', { cause: err })
+    }
+    fail(error);
     return;
   }
 
@@ -149,7 +155,13 @@ ${formatImage({
 ${getCommentFooter()}
       `);
     } catch (err) {
-      return fail?.(err);
+      let error : Error;
+      if (err instanceof Error) {
+        error = err;
+      } else {
+        error = new Error('Unexpected error', { cause: err })
+      }
+      return fail?.(error);
     }
   }
 
@@ -200,7 +212,13 @@ ${formatImage({
 ${getCommentFooter()}
     `);
   } catch (err) {
-    fail?.(err);
+    let error : Error;
+    if (err instanceof Error) {
+      error = err;
+    } else {
+      error = new Error('Unexpected error', { cause: err })
+    }
+    fail?.(error);
   }
 }
 

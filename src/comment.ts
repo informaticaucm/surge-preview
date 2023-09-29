@@ -1,4 +1,11 @@
-import type { Octokit, Repo } from './commentToPullRequest';
+import type { GitHub } from '@actions/github/lib/utils';
+
+export type Octokit = InstanceType<typeof GitHub>;
+
+export type Repo = {
+  owner: string;
+  repo: string;
+};
 
 function headerComment(header?: string) {
   return `<!-- Sticky Pull Request Comment${header || ''} -->`;

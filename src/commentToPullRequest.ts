@@ -1,12 +1,5 @@
 import * as core from '@actions/core';
-import type { GitHub } from '@actions/github/lib/utils';
-import { createComment, findPreviousComment, updateComment } from './comment';
-
-export type Octokit = InstanceType<typeof GitHub>;
-export type Repo = {
-  owner: string;
-  repo: string;
-};
+import { Octokit, Repo, createComment, findPreviousComment, updateComment } from './comment';
 
 interface CommentConfig {
   repo: Repo;
@@ -51,6 +44,10 @@ export async function comment({
       await createComment(octokit, repo, number, body, prefixedHeader);
     }
   } catch (err) {
-    core.setFailed(err.message);
+    let errorMessage = 'Unexpected error';
+    if (err instanceof Error) {
+      errorMessage = err.message;
+    }
+    core.setFailed(errorMessage);
   }
 }
