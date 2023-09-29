@@ -19,7 +19,7 @@ async function main() {
   );
   failOnErrorGlobal = failOnError;
   core.debug(
-    `failOnErrorGlobal: ${typeof failOnErrorGlobal} + ${failOnErrorGlobal.toString()}`
+    `failOnErrorGlobal: ${typeof failOnErrorGlobal} + ${failOnErrorGlobal.toString()}`,
   );
   const octokit = github.getOctokit(token);
   let prNumber: number | undefined;
@@ -109,11 +109,11 @@ ${getCommentFooter()}
     });
     data = result.data;
   } catch (err) {
-    let error : Error;
+    let error: Error;
     if (err instanceof Error) {
       error = err;
     } else {
-      error = new Error('Unexpected error', { cause: err })
+      error = new Error('Unexpected error', { cause: err });
     }
     fail(error);
     return;
@@ -155,11 +155,11 @@ ${formatImage({
 ${getCommentFooter()}
       `);
     } catch (err) {
-      let error : Error;
+      let error: Error;
       if (err instanceof Error) {
         error = err;
       } else {
-        error = new Error('Unexpected error', { cause: err })
+        error = new Error('Unexpected error', { cause: err });
       }
       return fail?.(error);
     }
@@ -212,11 +212,11 @@ ${formatImage({
 ${getCommentFooter()}
     `);
   } catch (err) {
-    let error : Error;
+    let error: Error;
     if (err instanceof Error) {
       error = err;
     } else {
-      error = new Error('Unexpected error', { cause: err })
+      error = new Error('Unexpected error', { cause: err });
     }
     fail?.(error);
   }

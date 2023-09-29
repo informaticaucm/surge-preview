@@ -1,5 +1,11 @@
 import * as core from '@actions/core';
-import { Octokit, Repo, createComment, findPreviousComment, updateComment } from './comment';
+import {
+  Octokit,
+  Repo,
+  createComment,
+  findPreviousComment,
+  updateComment,
+} from './comment';
 
 interface CommentConfig {
   repo: Repo;
@@ -27,7 +33,7 @@ export async function comment({
       octokit,
       repo,
       number,
-      prefixedHeader
+      prefixedHeader,
     );
     const body = message;
 
@@ -38,7 +44,7 @@ export async function comment({
         previous.id,
         body,
         prefixedHeader,
-        false
+        false,
       );
     } else {
       await createComment(octokit, repo, number, body, prefixedHeader);
