@@ -13,6 +13,9 @@ export const execSurgeCommand = async ({
       stdout: (stdoutData: Buffer) => {
         myOutput += stdoutData.toString();
       },
+      stderr: (data: Buffer) => {
+        myOutput += data.toString();
+      }
     },
   };
   await exec(`npx`, command, options);
