@@ -12,6 +12,7 @@ async function main() {
     core.getInput('surge_token') || '6973bdb764f0d5fd07c910de27e2d7d0';
   const token = core.getInput('github_token', { required: true });
   const dist = core.getInput('dist');
+  const suffix = core.getInput('suffix');
   const teardown =
     core.getInput('teardown')?.toString().toLowerCase() === 'true';
   const failOnError = !!(
@@ -96,7 +97,7 @@ ${getCommentFooter()}
 
   const repoOwner = github.context.repo.owner.replace(/\./g, '-');
   const repoName = github.context.repo.repo.replace(/\./g, '-');
-  const url = `${repoOwner}-${repoName}-${job}-pr-${prNumber}.surge.sh`;
+  const url = `${repoOwner}-${repoName}-${job}-pr-${prNumber}${suffix}.surge.sh`;
 
   core.setOutput('preview_url', url);
 

@@ -78,6 +78,7 @@ jobs:
         with:
           surge_token: ${{ secrets.SURGE_TOKEN }}
           dist: public
+          suffix: "-xyz"
           build: |
             npm install
             npm run build
@@ -86,7 +87,7 @@ jobs:
 The preview website urls will be:
 
 - `https://{{repository.owner}}-{{repository.name}}-preview-job-1-pr-{{pr.number}}.surge.sh`
-- `https://{{repository.owner}}-{{repository.name}}-preview-job-2-pr-{{pr.number}}.surge.sh`
+- `https://{{repository.owner}}-{{repository.name}}-preview-job-2-pr-{{pr.number}}-xyz.surge.sh`
 
 ### Teardown
 
@@ -126,6 +127,7 @@ jobs:
 - `dist`: dist folder deployed to [surge.sh](https://surge.sh/).
 - `failOnError`: Set `failed` if a deployment throws error, defaults to `false`.
 - `teardown`: Determines if the preview instance will be torn down on PR close, defaults to `false`.
+- `suffix`: Suffix to be added to the preview URL, defaults to empty string. Can be use to avoid site preview enumeration.
 
 ### Outputs
 

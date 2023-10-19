@@ -25,6 +25,10 @@ inputs:
     description: 'Determines if the preview instance will be torn down on PR close'
     default: 'false'
     required: false
+  suffix:
+    description: 'url suffix'
+    default: ''
+    required: false
 outputs:
   preview_url:
     description: 'The url for the related PR preview'
